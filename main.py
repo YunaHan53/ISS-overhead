@@ -1,6 +1,6 @@
 import requests
 from datetime import datetime
-from credentials import Credentials
+from credentials import Credentials, Position
 import smtplib
 import time
 
@@ -9,8 +9,8 @@ TO_EMAIL = Credentials.to_email
 SMTP = Credentials.smtp_host
 MY_PW = Credentials.pw
 
-LATITUDE = 42.360081
-LONGITUDE = -71.058884
+LATITUDE = Position.latitude
+LONGITUDE = Position.longitude
 
 def is_iss_in_radar():
     """Sends a request to get current ISS position AND checks if
@@ -73,7 +73,7 @@ def send_email():
 
 
 while True:
-    time.sleep(60)
     if is_iss_in_radar() and is_night():
         print("Look up in the sky!\n\nSending Email...")
         send_email()
+    time.sleep(60)
