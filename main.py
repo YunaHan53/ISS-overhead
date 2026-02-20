@@ -24,14 +24,13 @@ def is_iss_in_radar():
     iss_position = (iss_latitude, iss_longitude)
     print(f"ISS current pos:{iss_position}")
     current_position = (LATITUDE, LONGITUDE)
-    print(f"My current pos: {current_position}")
 
     x_diff = current_position[0] - iss_position[0]
     y_diff = current_position[1] - iss_position[1]
-    print(x_diff, y_diff)
 
     # Your position is within +5 or -5 degrees of the ISS position.
     if abs(x_diff) <= 5 and abs(y_diff) <= 5:
+        print(x_diff, y_diff)
         print("ISS is overhead! O.O")
         return True
     else:
